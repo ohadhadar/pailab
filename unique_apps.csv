@@ -1,4 +1,4 @@
-package,category
+apps,category
 """com.goldtouch.ynet""",NEWS_AND_MAGAZINES
 """com.google.android.googlequicksearchbox""",TOOLS
 """com.samsung.android.calendar""",PRODUCTIVITY
@@ -487,3 +487,4 @@ package,category
 """com.com2us.smon.normal.freefull.google.kr.android.common""",GAME_ROLE_PLAYING
 """com.timewatch""",BUSINESS
 """il.co.inmanage.new_deli""",FOOD_AND_DRINK
+
