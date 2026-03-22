@@ -1,0 +1,178 @@
+
+<style>
+  .participant-section { margin-bottom: 2rem; border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); overflow: hidden; }
+  .participant-header { padding: 10px 16px; background: var(--color-background-secondary); border-bottom: 0.5px solid var(--color-border-tertiary); font-size: 13px; font-weight: 500; color: var(--color-text-secondary); }
+  .outcome-row { display: grid; grid-template-columns: 90px 1fr; border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .outcome-row:last-child { border-bottom: none; }
+  .auc-cell { padding: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-right: 0.5px solid var(--color-border-tertiary); background: var(--color-background-primary); }
+  .auc-number { font-size: 22px; font-weight: 500; line-height: 1; }
+  .auc-label { font-size: 11px; color: var(--color-text-secondary); margin-top: 3px; }
+  .features-cell { padding: 10px 14px; background: var(--color-background-primary); }
+  .feature-row { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
+  .feature-name { font-size: 11px; color: var(--color-text-primary); width: 200px; flex-shrink: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .bar-container { flex: 1; height: 10px; background: var(--color-background-secondary); border-radius: 5px; position: relative; overflow: visible; }
+  .bar-pos { position: absolute; left: 50%; height: 100%; border-radius: 0 5px 5px 0; }
+  .bar-neg { position: absolute; right: 50%; height: 100%; border-radius: 5px 0 0 5px; }
+  .zero-line { position: absolute; left: 50%; top: -2px; bottom: -2px; width: 1px; background: var(--color-border-secondary); }
+  .method-divider { background: var(--color-background-tertiary); padding: 4px 14px; font-size: 11px; color: var(--color-text-tertiary); border-bottom: 0.5px solid var(--color-border-tertiary); border-top: 0.5px solid var(--color-border-tertiary); }
+  .section-title { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin: 1.5rem 0 0.5rem; }
+  .export-btn { font-size: 12px; padding: 6px 14px; border-radius: var(--border-radius-md); border: 0.5px solid var(--color-border-secondary); background: transparent; color: var(--color-text-secondary); cursor: pointer; margin-bottom: 1rem; }
+  .export-btn:hover { background: var(--color-background-secondary); }
+  .legend-row { display: flex; gap: 20px; margin-top: 1rem; font-size: 11px; color: var(--color-text-secondary); align-items: center; flex-wrap: wrap; }
+  .legend-swatch { width: 20px; height: 6px; border-radius: 3px; display: inline-block; }
+</style>
+
+<div style="padding: 0.5rem 0;" id="viz-root">
+
+<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+  <span style="font-size:12px;color:var(--color-text-secondary);">Simulated data — replace with real estimates</span>
+  <button class="export-btn" onclick="exportHTML()">Export as HTML ↗</button>
+</div>
+
+<div class="section-title">Participant 1 — aim_noakirel</div>
+<div class="participant-section">
+  <div class="participant-header">Two outcomes, different signal types within the same person</div>
+
+  <div class="method-divider">emot_distress · prevalence · AUC (test) = 0.60</div>
+  <div class="outcome-row">
+    <div class="auc-cell">
+      <span class="auc-number" style="color:#888780;">0.60</span>
+      <span class="auc-label">AUC</span>
+    </div>
+    <div class="features-cell">
+      <div class="feature-row"><span class="feature-name">noise_above_70db</span><div class="bar-container"><div class="zero-line"></div><div class="bar-neg" style="width:38%;background:#E24B4A;opacity:0.7;"></div></div></div>
+      <div class="feature-row"><span class="feature-name">l_per_item_1</span><div class="bar-container"><div class="zero-line"></div><div class="bar-pos" style="width:32%;background:#1D9E75;opacity:0.75;"></div></div></div>
+      <div class="feature-row"><span class="feature-name">l_self_crit</span><div class="bar-container"><div class="zero-line"></div><div class="bar-pos" style="width:28%;background:#1D9E75;opacity:0.7;"></div></div></div>
+      <div class="feature-row"><span class="feature-name">l_family_stress</span><div class="bar-container"><div class="zero-line"></div><div class="bar-pos" style="width:22%;background:#1D9E75;opacity:0.6;"></div></div></div>
+      <div class="feature-row"><span class="feature-name">l_loc_medical</span><div class="bar-container"><div class="zero-line"></div><div class="bar-pos" style="width:15%;background:#1D9E75;opacity:0.5;"></div></div></div>
+    </div>
+  </div>
+
+  <div class="method-divider">self_crit · prevalence · AUC (test) = 0.76</div>
+  <div class="outcome-row">
+    <div class="auc-cell">
+      <span class="auc-number" style="color:#1D9E75;">0.76</span>
+      <span class="auc-label">AUC</span>
+    </div>
+    <div class="features-cell">
+      <div class="feature-row"><span class="feature-name">l_self_crit</span><div class="bar-container"><div class="zero-line"></div><div class="bar-pos" style="width:44%;background:#1D9E75;opacity:0.85;"></div></div></div>
+      <div class="feature-row"><span class="feature-name">l_worry_events</span><div class="bar-container"><div class="zero-line"></div><div class="bar-pos" style="width:36%;background:#1D9E75;opacity:0.75;"></div></div></div>
+      <div class="feature-row"><span class="feature-name">l_inter_cold</span><div class="bar-container"><div class="zero-line"></div><div class="bar-pos" style="width:30%;background:#1D9E75;opacity:0.7;"></div></div></div>
+      <div class="feature-row"><span class="feature-name">l_appearance_stress</span><div class="bar-container"><div class="zero-line"></div><div class="bar-neg" style="width:26%;background:#E24B4A;opacity:0.65;"></div></div></div>
+      <div class="feature-row"><span class="feature-name">l_loc_restaurant</span><div class="bar-container"><div class="zero-line"></div><div class="bar-pos" style="width:18%;background:#1D9E75;opacity:0.55;"></div></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="section-title">Participant 2 — aim_oreo</div>
+<div class="participant-section">
+  <div class="participant-header">Classification method determines whether prediction is possible at all</div>
+
+  <div class="method-divider">worry_events · balance · AUC (test) = 0.51</div>
+  <div class="outcome-row">
+    <div class="auc-cell">
+      <span class="auc-number" style="color:#E24B4A;">0.51</span>
+      <span class="auc-label">AUC</span>
+    </div>
+    <div class="features-cell">
+      <div class="feature-row"><span class="feature-name">l_phys_discomfort</span><div class="bar-container"><div class="zero-line"></div><div class="bar-pos" style="width:18%;background:#888780;opacity:0.5;"></div></div></div>
+      <div class="feature-row"><span class="feature-name">l_people_i_know</span><div class="bar-container"><div class="zero-line"></div><div class="bar-neg" style="width:14%;background:#888780;opacity:0.45;"></div></div></div>
+      <div class="feature-row"><span class="feature-name">l_financial_stress</span><div class="bar-container"><div class="zero-line"></div><div class="bar-pos" style="width:10%;background:#888780;opacity:0.4;"></div></div></div>
+      <div class="feature-row"><span class="feature-name">l_fri</span><div class="bar-container"><div class="zero-line"></div><div class="bar-pos" style="width:8%;background:#888780;opacity:0.35;"></div></div></div>
+      <div class="feature-row"><span class="feature-name">l_people_mom</span><div class="bar-container"><div class="zero-line"></div><div class="bar-neg" style="width:7%;background:#888780;opacity:0.3;"></div></div></div>
+    </div>
+  </div>
+
+  <div class="method-divider">worry_events · prevalence · AUC (test) = 0.73</div>
+  <div class="outcome-row">
+    <div class="auc-cell">
+      <span class="auc-number" style="color:#1D9E75;">0.73</span>
+      <span class="auc-label">AUC</span>
+    </div>
+    <div class="features-cell">
+      <div class="feature-row"><span class="feature-name">l_failure_experience</span><div class="bar-container"><div class="zero-line"></div><div class="bar-pos" style="width:48%;background:#1D9E75;opacity:0.85;"></div></div></div>
+      <div class="feature-row"><span class="feature-name">l_sense_of_belonging_stress</span><div class="bar-container"><div class="zero-line"></div><div class="bar-pos" style="width:38%;background:#1D9E75;opacity:0.75;"></div></div></div>
+      <div class="feature-row"><span class="feature-name">l_worry_events</span><div class="bar-container"><div class="zero-line"></div><div class="bar-pos" style="width:30%;background:#1D9E75;opacity:0.7;"></div></div></div>
+      <div class="feature-row"><span class="feature-name">l_people_i_know</span><div class="bar-container"><div class="zero-line"></div><div class="bar-neg" style="width:22%;background:#E24B4A;opacity:0.6;"></div></div></div>
+      <div class="feature-row"><span class="feature-name">l_sinW</span><div class="bar-container"><div class="zero-line"></div><div class="bar-neg" style="width:15%;background:#E24B4A;opacity:0.5;"></div></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="section-title">Participant 3 — aim_15</div>
+<div class="participant-section">
+  <div class="participant-header">The predictively stronger model relies on contextual, not psychological, signal</div>
+
+  <div class="method-divider">emot_distress · balance · AUC (test) = 0.55</div>
+  <div class="outcome-row">
+    <div class="auc-cell">
+      <span class="auc-number" style="color:#E24B4A;">0.55</span>
+      <span class="auc-label">AUC</span>
+    </div>
+    <div class="features-cell">
+      <div class="feature-row"><span class="feature-name">l_inter_cold</span><div class="bar-container"><div class="zero-line"></div><div class="bar-neg" style="width:32%;background:#E24B4A;opacity:0.65;"></div></div></div>
+      <div class="feature-row"><span class="feature-name">l_people_alone</span><div class="bar-container"><div class="zero-line"></div><div class="bar-pos" style="width:28%;background:#1D9E75;opacity:0.65;"></div></div></div>
+      <div class="feature-row"><span class="feature-name">l_self_awareness_difficulty</span><div class="bar-container"><div class="zero-line"></div><div class="bar-pos" style="width:24%;background:#1D9E75;opacity:0.6;"></div></div></div>
+      <div class="feature-row"><span class="feature-name">l_emot_distress</span><div class="bar-container"><div class="zero-line"></div><div class="bar-pos" style="width:20%;background:#1D9E75;opacity:0.55;"></div></div></div>
+      <div class="feature-row"><span class="feature-name">l_thoughts_neg</span><div class="bar-container"><div class="zero-line"></div><div class="bar-pos" style="width:16%;background:#1D9E75;opacity:0.5;"></div></div></div>
+    </div>
+  </div>
+
+  <div class="method-divider">emot_distress · prevalence · AUC (test) = 0.84</div>
+  <div class="outcome-row">
+    <div class="auc-cell">
+      <span class="auc-number" style="color:#1D9E75;">0.84</span>
+      <span class="auc-label">AUC</span>
+    </div>
+    <div class="features-cell">
+      <div class="feature-row"><span class="feature-name">l_ping2</span><div class="bar-container"><div class="zero-line"></div><div class="bar-pos" style="width:42%;background:#378ADD;opacity:0.8;"></div></div></div>
+      <div class="feature-row"><span class="feature-name">l_thur</span><div class="bar-container"><div class="zero-line"></div><div class="bar-pos" style="width:34%;background:#378ADD;opacity:0.75;"></div></div></div>
+      <div class="feature-row"><span class="feature-name">l_tues</span><div class="bar-container"><div class="zero-line"></div><div class="bar-pos" style="width:28%;background:#378ADD;opacity:0.7;"></div></div></div>
+      <div class="feature-row"><span class="feature-name">l_loc_medical</span><div class="bar-container"><div class="zero-line"></div><div class="bar-neg" style="width:22%;background:#E24B4A;opacity:0.6;"></div></div></div>
+      <div class="feature-row"><span class="feature-name">l_per_item_2</span><div class="bar-container"><div class="zero-line"></div><div class="bar-neg" style="width:16%;background:#E24B4A;opacity:0.5;"></div></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="legend-row">
+  <span style="display:flex;align-items:center;gap:4px;"><span class="legend-swatch" style="background:#1D9E75;opacity:0.8;"></span>positive association</span>
+  <span style="display:flex;align-items:center;gap:4px;"><span class="legend-swatch" style="background:#E24B4A;opacity:0.8;"></span>negative association</span>
+  <span style="display:flex;align-items:center;gap:4px;"><span class="legend-swatch" style="background:#378ADD;opacity:0.8;"></span>contextual / temporal</span>
+  <span style="display:flex;align-items:center;gap:4px;"><span class="legend-swatch" style="background:#888780;opacity:0.8;"></span>no stable signal</span>
+</div>
+
+</div>
+
+<script>
+function exportHTML() {
+  const content = document.getElementById('viz-root').innerHTML;
+  const styles = `
+    body { font-family: sans-serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; background: #fff; color: #1a1a1a; }
+    .participant-section { margin-bottom: 2rem; border: 1px solid #ddd; border-radius: 10px; overflow: hidden; }
+    .participant-header { padding: 10px 16px; background: #f5f5f5; border-bottom: 1px solid #ddd; font-size: 13px; font-weight: 500; color: #555; }
+    .outcome-row { display: grid; grid-template-columns: 90px 1fr; border-bottom: 1px solid #eee; }
+    .outcome-row:last-child { border-bottom: none; }
+    .auc-cell { padding: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-right: 1px solid #eee; background: #fff; }
+    .auc-number { font-size: 22px; font-weight: 500; line-height: 1; }
+    .auc-label { font-size: 11px; color: #888; margin-top: 3px; }
+    .features-cell { padding: 10px 14px; background: #fff; }
+    .feature-row { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
+    .feature-name { font-size: 11px; width: 200px; flex-shrink: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .bar-container { flex: 1; height: 10px; background: #f0f0f0; border-radius: 5px; position: relative; }
+    .bar-pos { position: absolute; left: 50%; height: 100%; border-radius: 0 5px 5px 0; }
+    .bar-neg { position: absolute; right: 50%; height: 100%; border-radius: 5px 0 0 5px; }
+    .zero-line { position: absolute; left: 50%; top: -2px; bottom: -2px; width: 1px; background: #ccc; }
+    .method-divider { background: #fafafa; padding: 4px 14px; font-size: 11px; color: #999; border-bottom: 1px solid #eee; border-top: 1px solid #eee; }
+    .section-title { font-size: 13px; font-weight: 500; margin: 1.5rem 0 0.5rem; }
+    .legend-row { display: flex; gap: 20px; margin-top: 1rem; font-size: 11px; color: #666; align-items: center; flex-wrap: wrap; }
+    .legend-swatch { width: 20px; height: 6px; border-radius: 3px; display: inline-block; }
+    .export-btn { display: none; }
+  `;
+  const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Person-specific prediction profiles</title><style>${styles}</style></head><body>${content}</body></html>`;
+  const blob = new Blob([html], { type: 'text/html' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'prediction_profiles.html';
+  a.click();
+}
+</script>
